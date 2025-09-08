@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ismael Muñoz Morales — Portfolio</title>
+  <meta name="description" content="Portfolio de Ismael Muñoz Morales: apps móviles, web MVC en C#, CLI en Node.js y juego IA con scikit-learn." />
+  <meta name="author" content="Ismael Muñoz Morales" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Ismael Muñoz Morales — Portfolio" />
+  <meta property="og:description" content="Apps móviles, web MVC en C#, CLI en Node.js y juego IA con scikit-learn." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://TU-DOMINIO.netlify.app/" />
+  <meta property="og:image" content="https://TU-DOMINIO.netlify.app/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Config opcional Tailwind
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { DEFAULT: '#0ea5e9' } }
+        }
+      }
+    };
+  </script>
+
+  <!-- Dark mode: conserva preferencia -->
+  <script>
+    (function () {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <link rel="icon" href="favicon.ico" />
+</head>
+
+<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 border-b border-zinc-200/70 bg-white/80 backdrop-blur dark:bg-zinc-950/80 dark:border-zinc-800/70">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <a href="#" class="font-semibold tracking-tight">Ismael Muñoz Morales</a>
+      <div class="flex items-center gap-4">
+        <a href="#projects" class="hover:underline">Proyectos</a>
+        <a href="#about" class="hover:underline">Sobre mí</a>
+        <a href="#contact" class="hover:underline">Contacto</a>
+        <button id="themeToggle" aria-label="Cambiar tema" class="rounded-xl border border-zinc-200 px-3 py-1 text-sm dark:border-zinc-800">
+          🌗
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          Desarrollador de aplicaciones <span class="text-brand">móvil y backend</span>
+        </h1>
+        <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300">
+          Portfolio con 4 proyectos: app de notas en React Native + Appwrite, tienda web MVC en C#, CLI en Node.js y
+          juego Piedra-Papel-Tijeras con IA (scikit-learn).
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-xl bg-brand px-5 py-3 font-semibold text-white hover:opacity-90">Ver proyectos</a>
+          <a href="https://europa.eu/europass/es" target="_blank" class="rounded-xl border px-5 py-3 font-semibold dark:border-zinc-800">CV Europass</a>
+        </div>
+      </div>
+      <div class="rounded-3xl border border-dashed p-8 text-sm text-zinc-500 dark:border-zinc-800">
+        <p>Stack destacado:</p>
+        <ul class="mt-3 grid grid-cols-2 gap-2">
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">React Native</li>
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">Appwrite</li>
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">C# / MVC</li>
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">Node.js</li>
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">Python</li>
+          <li class="rounded-lg border px-3 py-2 dark:border-zinc-800">scikit-learn</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtro -->
+  <section id="projects" class="mx-auto max-w-6xl px-4 pb-4">
+    <div class="mb-6 flex flex-wrap items-center gap-2">
+      <span class="text-sm text-zinc-500 dark:text-zinc-400">Filtrar:</span>
+      <button data-filter="all" class="filter-btn rounded-full border px-4 py-1 text-sm dark:border-zinc-800">Todos</button>
+      <button data-filter="mobile" class="filter-btn rounded-full border px-4 py-1 text-sm dark:border-zinc-800">Móvil</button>
+      <button data-filter="web" class="filter-btn rounded-full border px-4 py-1 text-sm dark:border-zinc-800">Web</button>
+      <button data-filter="cli" class="filter-btn rounded-full border px-4 py-1 text-sm dark:border-zinc-800">CLI</button>
+      <button data-filter="ml" class="filter-btn rounded-full border px-4 py-1 text-sm dark:border-zinc-800">ML</button>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div id="grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Notas RN -->
+      <article class="card group flex flex-col rounded-2xl border p-5 dark:border-zinc-800" data-tags="mobile">
+        <div class="mb-4 aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900 grid place-items-center">
+          <img src="images/notes.png" alt="Screenshot" class="w-24 h-auto rounded shadow-sm" />
+
+        </div>
+        <h3 class="text-xl font-bold">Notas App — React Native + Appwrite</h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+          App de notas con búsqueda, etiquetas, papelera, recordatorios, multimedia y i18n. Backend con Appwrite Functions.
+          Basada en tutorial de <a class="underline" href="https://github.com/bradtraversy/notes-app" target="_blank">Brad Traversy</a> y ampliada.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">React Native</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">Appwrite</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">Expo</span>
+        </div>
+        <div class="mt-4 flex gap-3">
+          <a class="rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white hover:opacity-90" href="https://github.com/TU-USUARIO/notes-app" target="_blank">Código</a>
+          <a class="rounded-lg border px-3 py-2 text-sm font-semibold dark:border-zinc-800" href="README.md" target="_blank">README</a>
+        </div>
+      </article>
+
+      <!-- Tienda MVC -->
+      <article class="card group flex flex-col rounded-2xl border p-5 dark:border-zinc-800" data-tags="web">
+        <div class="mb-4 aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900 grid place-items-center">
+          <img src="images/inicio.png" alt="Screenshot" class="w-100 h-auto rounded shadow-sm" />
+        </div>
+        <h3 class="text-xl font-bold">Tienda Web — C# MVC (Trabajo en equipo)</h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+          Refactor y pulido de e-commerce con patrón MVC, testing básico y documentación de TFG.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">C#</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">ASP.NET MVC</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">SQL</span>
+        </div>
+        <div class="mt-4 flex gap-3">
+          <a class="rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white hover:opacity-90" href="https://github.com/TU-USUARIO/store-mvc" target="_blank">Código</a>
+          <a class="rounded-lg border px-3 py-2 text-sm font-semibold dark:border-zinc-800" href="README.md" target="_blank">README</a>
+        </div>
+      </article>
+
+      <!-- CLI Node -->
+      <article class="card group flex flex-col rounded-2xl border p-5 dark:border-zinc-800" data-tags="cli">
+        <div class="mb-4 aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900 grid place-items-center">
+          <img src="images/cli.png" alt="Screenshot" class="w-100 h-auto rounded shadow-sm" />
+        </div>
+        <h3 class="text-xl font-bold">CLI Tool — Node.js</h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+          CLI para scraping, filtrado/transformación de JSON y export a CSV/Markdown, más ejecución de scripts externos.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">Node.js</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">Puppeteer</span>
+        </div>
+        <div class="mt-4 flex gap-3">
+          <a class="rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white hover:opacity-90" href="https://github.com/CodeMasters12218/cli-tool" target="_blank">Código</a>
+          <a class="rounded-lg border px-3 py-2 text-sm font-semibold dark:border-zinc-800" href="README.md" target="_blank">README</a>
+        </div>
+      </article>
+
+      <!-- RPS ML -->
+      <article class="card group flex flex-col rounded-2xl border p-5 dark:border-zinc-800" data-tags="ml">
+        <div class="mb-4 aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900 grid place-items-center">
+          <img src="images/piedra_papel.png" alt="Screenshot" class="w-100 h-auto rounded shadow-sm" />
+        </div>
+        <h3 class="text-xl font-bold">Piedra-Papel-Tijeras con IA (scikit-learn)</h3>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+          IA que aprende patrones y predice tu jugada. Modo “tramposa” para subir la dificultad.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">Python</span>
+          <span class="rounded-full bg-zinc-100 px-2 py-1 dark:bg-zinc-900">scikit-learn</span>
+        </div>
+        <div class="mt-4 flex gap-3">
+          <a class="rounded-lg bg-brand px-3 py-2 text-sm font-semibold text-white hover:opacity-90" href="https://github.com/TU-USUARIO/rps-ml" target="_blank">Código</a>
+          <a class="rounded-lg border px-3 py-2 text-sm font-semibold dark:border-zinc-800" href="README.md" target="_blank">README</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section id="about" class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="rounded-3xl border p-8 dark:border-zinc-800">
+      <h2 class="text-2xl font-bold">Sobre mí</h2>
+      <p class="mt-3 text-zinc-600 dark:text-zinc-300">
+        Soy desarrollador con foco en apps móviles (React Native) y backend (Appwrite / .NET). Me gusta cuidar DX,
+        rendimiento y la calidad de código. Busco oportunidades junior donde pueda aportar y seguir creciendo.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+       <!--<a class="rounded-xl border px-4 py-2 dark:border-zinc-800" href="https://www.linkedin.com/in/TU-LINKEDIN" target="_blank">LinkedIn</a>--> 
+        <a class="rounded-xl border px-4 py-2 dark:border-zinc-800" href="https://github.com/CodeMasters12218" target="_blank">GitHub</a>
+        <a class="rounded-xl border px-4 py-2 dark:border-zinc-800" href="https://europa.eu/europass/es" target="_blank">CV Europass</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto (Netlify Forms) -->
+  <section id="contact" class="mx-auto max-w-6xl px-4 pb-24">
+    <div class="rounded-3xl border p-8 dark:border-zinc-800">
+      <h2 class="text-2xl font-bold">Contacto</h2>
+      <p class="mt-2 text-zinc-600 dark:text-zinc-300">¿Te interesa mi perfil? Escríbeme:</p>
+      <form name="contact" method="POST" data-netlify="true" class="mt-6 grid gap-4 sm:max-w-lg">
+        <input type="hidden" name="form-name" value="contact" />
+        <label class="text-sm">
+          Nombre
+          <input name="name" required class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-zinc-800 dark:bg-zinc-900" />
+        </label>
+        <label class="text-sm">
+          Email
+          <input type="email" name="email" required class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-zinc-800 dark:bg-zinc-900" />
+        </label>
+        <label class="text-sm">
+          Mensaje
+          <textarea name="message" rows="4" required class="mt-1 w-full rounded-lg border px-3 py-2 dark:border-zinc-800 dark:bg-zinc-900"></textarea>
+        </label>
+        <button class="mt-2 w-fit rounded-xl bg-brand px-5 py-2 font-semibold text-white hover:opacity-90">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-6 text-center text-sm text-zinc-500 dark:border-zinc-800">
+    © 2025 Ismael Muñoz Morales — MIT
+  </footer>
+
+  <!-- Comportamiento: tema + filtro -->
+  <script>
+    // Toggle tema
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const el = document.documentElement;
+      const isDark = el.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Filtro simple por data-tags
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        buttons.forEach(b => b.classList.remove('bg-brand','text-white'));
+        btn.classList.add('bg-brand','text-white');
+        cards.forEach(card => {
+          const tags = (card.dataset.tags || '').split(',');
+          const show = filter === 'all' || tags.includes(filter);
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+    // Selección inicial
+    document.querySelector('[data-filter="all"]').click();
+  </script>
+</body>
+</html>
